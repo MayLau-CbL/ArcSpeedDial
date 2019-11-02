@@ -1,37 +1,3 @@
-# flutter_arc_speed_dial
-
-A bunch of FloatingActionButtons to consist speed dial in arc
-
-## Usage
-
-This shows Widget's full customizations:
-
-```
-SpeedDialMenuButton(
-      {this.isEnableAnimation = true,
-      @required this.mainMenuFloatingActionButton,
-      @required this.isMainFABMini,
-      @required this.floatingActionButtonWidgetChildren,
-      @required this.isSpeedDialFABsMini,
-      this.mainFABPosX = 10.0,
-      this.mainFABPosY = 10.0,
-      this.paddingBtwSpeedDialButton = 20.0
-      });
-```
-
-1. [required] mainMenuFloatingActionButton is the Main Menu FloatingActionButton that required input a MainMenuFloatingActionButton
-2. [required] floatingActionButtonWidgetChildren is a List of FloatingActionButton that will show as the speed dial buttons
-3. [required] isMainFABMini is to define the mainMenuFloatingActionButton is a 'normal size' or 'mini size' FloatingActionButton
-4. [required] This library is required all speed dial buttons with same size which is normal and mini size. isSpeedDialFABsMini is to input which size is using
-5. mainFABPosX and mainFABPosY is the x-y position of the mainMenuFloatingActionButton by aligning bottom-right.
-6. paddingBtwSpeedDialButton is the space between each speed dial button
-7. isEnableAnimation is to on-off the animation to display the speed dial buttons.
-
-## Example
-
-![](../on-off-button.gif)
-
-```
 import 'package:flutter/material.dart';
 import 'package:flutter_arc_speed_dial/flutter_speed_dial_menu_button.dart';
 import 'package:flutter_arc_speed_dial/main_menu_floating_action_button.dart';
@@ -111,9 +77,3 @@ class _MyHomePageState extends State<MyHomePage> {
     return Container();
   }
 }
-
-```
-
-## License
-
-MIT
