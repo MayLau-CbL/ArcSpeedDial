@@ -58,10 +58,10 @@ class SpeedDial extends StatefulWidget {
 
 class _SpeedDialState extends State<SpeedDial>
     with SingleTickerProviderStateMixin {
-  final double NORMAL_FAB_DIAMETER = 56.0;
-  final double MINI_FAB_DIAMETER = 40.0;
-  final double NORMAL_FAB_RADIUS = 28.0;
-  final double MINI_FAB_RADIUS = 20.0;
+  static const double NORMAL_FAB_DIAMETER = 56.0;
+  static const double MINI_FAB_DIAMETER = 40.0;
+  static const double NORMAL_FAB_RADIUS = 28.0;
+  static const double MINI_FAB_RADIUS = 20.0;
 
   double _radius;
   double _diff;
