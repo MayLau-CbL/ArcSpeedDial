@@ -27,7 +27,7 @@ SpeedDialMenuButton(
 6. paddingBtwSpeedDialButton is the space between each speed dial button
 7. isEnableAnimation is to on-off the animation to display the speed dial buttons.
 
-###MainMenuFloatingActionButton
+### MainMenuFloatingActionButton
 This is the main menu floating button for open and hide the speed dials. Basically having the same fields that is in the FloatingActionButton, but has 3 more field for identify the FAB when showing the close menu button.
 
 ```
