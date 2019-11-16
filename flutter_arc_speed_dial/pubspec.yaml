@@ -1,8 +1,8 @@
 name: flutter_arc_speed_dial
-description: A bunch of FloatingActionButtons to consist speed dial in arc
+description: A bunch of FloatingActionButtons to consist speed dial in arc shape
 version: 1.0.0
 author: May Lau<may.lau.dev@gmail.com>
-homepage:
+homepage: https://github.com/MayLau-CbL/ArcSpeedDial/tree/master/flutter_arc_speed_dial
 
 environment:
   sdk: ">=2.1.0 <3.0.0"

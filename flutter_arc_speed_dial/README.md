@@ -19,13 +19,35 @@ SpeedDialMenuButton(
       });
 ```
 
-1. [required] mainMenuFloatingActionButton is the Main Menu FloatingActionButton that required input a MainMenuFloatingActionButton
+1. [required] mainMenuFloatingActionButton is the Main Menu FloatingActionButton that required input a 'MainMenuFloatingActionButton'
 2. [required] floatingActionButtonWidgetChildren is a List of FloatingActionButton that will show as the speed dial buttons
 3. [required] isMainFABMini is to define the mainMenuFloatingActionButton is a 'normal size' or 'mini size' FloatingActionButton
 4. [required] This library is required all speed dial buttons with same size which is normal and mini size. isSpeedDialFABsMini is to input which size is using
 5. mainFABPosX and mainFABPosY is the x-y position of the mainMenuFloatingActionButton by aligning bottom-right.
 6. paddingBtwSpeedDialButton is the space between each speed dial button
 7. isEnableAnimation is to on-off the animation to display the speed dial buttons.
+
+###MainMenuFloatingActionButton
+This is the main menu floating button for open and hide the speed dials. Basically having the same fields that is in the FloatingActionButton, but has 3 more field for identify the FAB when showing the close menu button.
+
+```
+MainMenuFloatingActionButton(
+    @required this.child,
+    @required this.closeMenuChild,
+    this.closeMenuForegroundColor,
+    this.foregroundColor,
+    this.closeMenuBackgroundColor,
+    this.backgroundColor,
+    ...same as the FAB...
+)
+```
+
+1. [required] child is the Icon when show the open menu icon.
+2. [required] closeMenuChild is the Icon when show the hide menu icon.
+3. foregroundColor is the icon color when show the open menu icon.
+4. closeMenuForegroundColor is the icon color when show the hide menu icon.
+5. backgroundColor is the button color when show the open menu icon.
+6. closeMenuBackgroundColor is the button color when show the hide menu icon.
 
 ## Example
 
