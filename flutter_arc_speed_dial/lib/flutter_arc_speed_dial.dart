@@ -36,19 +36,18 @@ class SpeedDial extends StatefulWidget {
   /// Is enable animation when hide show the speed dial children
   final bool isEnableAnimation;
 
-  const SpeedDial(
-      {this.isShowDial = false,
-      this.isEnableAnimation = true,
-      @required this.mainFloatingActionButtonWidget,
-      @required this.isMainFABMini,
-      @required this.floatingActionButtonWidgetChildren,
-      @required this.isSpeedDialFABsMini,
-      @required this.totalSpeedDialItem,
-      this.mainFABPosX = 10.0,
-      this.mainFABPosY = 10.0,
-      this.paddingBtwSpeedDialButton = 20.0
+  const SpeedDial({this.isShowDial = false,
+    this.isEnableAnimation = true,
+    @required this.mainFloatingActionButtonWidget,
+    @required this.isMainFABMini,
+    @required this.floatingActionButtonWidgetChildren,
+    @required this.isSpeedDialFABsMini,
+    @required this.totalSpeedDialItem,
+    this.mainFABPosX = 10.0,
+    this.mainFABPosY = 10.0,
+    this.paddingBtwSpeedDialButton = 20.0
 //    this.difference = 0.0,
-      });
+  });
 
   @override
   State<StatefulWidget> createState() {
@@ -115,8 +114,8 @@ class _SpeedDialState extends State<SpeedDial>
     );
   }
 
-  Widget _getSpeedDialFABWidget(
-      int ttlNum, int index, double radius, Widget child) {
+  Widget _getSpeedDialFABWidget(int ttlNum, int index, double radius,
+      Widget child) {
     return _getFAB(widget.mainFABPosX + _diff + _getX(ttlNum, index, radius),
         widget.mainFABPosY + _diff + _getY(ttlNum, index, radius), child);
   }
@@ -127,10 +126,10 @@ class _SpeedDialState extends State<SpeedDial>
       right: x,
       child: widget.isEnableAnimation
           ? AnimatedOpacity(
-              curve: Curves.linear,
-              opacity: widget.isShowDial ? 1.0 : 0.0,
-              duration: const Duration(milliseconds: 100),
-              child: child)
+          curve: Curves.linear,
+          opacity: widget.isShowDial ? 1.0 : 0.0,
+          duration: const Duration(milliseconds: 100),
+          child: child)
           : child,
     );
   }

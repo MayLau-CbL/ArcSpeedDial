@@ -15,7 +15,9 @@ SpeedDialMenuButton(
       @required this.isSpeedDialFABsMini,
       this.mainFABPosX = 10.0,
       this.mainFABPosY = 10.0,
-      this.paddingBtwSpeedDialButton = 20.0
+      this.paddingBtwSpeedDialButton = 20.0,
+      this.isShowSpeedDial = false,
+      this.updateSpeedDialStatus
       });
 ```
 
@@ -26,6 +28,8 @@ SpeedDialMenuButton(
 5. mainFABPosX and mainFABPosY is the x-y position of the mainMenuFloatingActionButton by aligning bottom-right.
 6. paddingBtwSpeedDialButton is the space between each speed dial button
 7. isEnableAnimation is to on-off the animation to display the speed dial buttons.
+8. isShowSpeedDial is the bool for manually open or close the menu outside the widget.
+9. updateSpeedDialStatus will return if any change of status within the widget.
 
 ### MainMenuFloatingActionButton
 This is the main menu floating button for open and hide the speed dials. Basically having the same fields that is in the FloatingActionButton, but has 3 more field for identify the FAB when showing the close menu button.
@@ -83,6 +87,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  bool _isShowDial = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,6 +102,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget _getFloatingActionButton() {
     return SpeedDialMenuButton(
+      //if needed to close the menu after clicking sub-FAB
+      isShowSpeedDial: _isShowDial,
+      //manually open or close menu
+      updateSpeedDialStatus: (isShow) {
+        //return any open or close change within the widget
+        this._isShowDial = isShow;
+      },
+      //general init
       isMainFABMini: false,
       mainMenuFloatingActionButton: MainMenuFloatingActionButton(
           mini: false,
@@ -108,19 +122,29 @@ class _MyHomePageState extends State<MyHomePage> {
         FloatingActionButton(
           mini: true,
           child: Icon(Icons.volume_off),
-          onPressed: () {},
+          onPressed: () {
+            //if need to close menu after click
+            _isShowDial = false;
+            setState(() {});
+          },
           backgroundColor: Colors.pink,
         ),
         FloatingActionButton(
           mini: true,
           child: Icon(Icons.volume_down),
-          onPressed: () {},
+          onPressed: () {
+            //if need to toggle menu after click
+            _isShowDial = !_isShowDial;
+            setState(() {});
+          },
           backgroundColor: Colors.orange,
         ),
         FloatingActionButton(
           mini: true,
           child: Icon(Icons.volume_up),
-          onPressed: () {},
+          onPressed: () {
+            //if no need to change the menu status
+          },
           backgroundColor: Colors.deepPurple,
         ),
       ],
@@ -133,6 +157,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Container();
   }
 }
+
 
 ```
 

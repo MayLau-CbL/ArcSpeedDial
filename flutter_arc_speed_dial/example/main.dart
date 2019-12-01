@@ -27,6 +27,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  bool _isShowDial = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,6 +42,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget _getFloatingActionButton() {
     return SpeedDialMenuButton(
+      //if needed to close the menu after clicking sub-FAB
+      isShowSpeedDial: _isShowDial,
+      //manually open or close menu
+      updateSpeedDialStatus: (isShow) {
+        //return any open or close change within the widget
+        this._isShowDial = isShow;
+      },
+      //general init
       isMainFABMini: false,
       mainMenuFloatingActionButton: MainMenuFloatingActionButton(
           mini: false,
@@ -52,19 +62,29 @@ class _MyHomePageState extends State<MyHomePage> {
         FloatingActionButton(
           mini: true,
           child: Icon(Icons.volume_off),
-          onPressed: () {},
+          onPressed: () {
+            //if need to close menu after click
+            _isShowDial = false;
+            setState(() {});
+          },
           backgroundColor: Colors.pink,
         ),
         FloatingActionButton(
           mini: true,
           child: Icon(Icons.volume_down),
-          onPressed: () {},
+          onPressed: () {
+            //if need to toggle menu after click
+            _isShowDial = !_isShowDial;
+            setState(() {});
+          },
           backgroundColor: Colors.orange,
         ),
         FloatingActionButton(
           mini: true,
           child: Icon(Icons.volume_up),
-          onPressed: () {},
+          onPressed: () {
+            //if no need to change the menu status
+          },
           backgroundColor: Colors.deepPurple,
         ),
       ],

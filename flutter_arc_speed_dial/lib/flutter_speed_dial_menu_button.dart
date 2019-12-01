@@ -32,6 +32,10 @@ class SpeedDialMenuButton extends StatefulWidget {
   /// Is enable animation when hide show the speed dial children
   final bool isEnableAnimation;
 
+  final bool isShowSpeedDial;
+
+  final void Function(bool) updateSpeedDialStatus;
+
   SpeedDialMenuButton(
       {this.isEnableAnimation = true,
       @required this.mainMenuFloatingActionButton,
@@ -40,9 +44,10 @@ class SpeedDialMenuButton extends StatefulWidget {
       @required this.isSpeedDialFABsMini,
       this.mainFABPosX = 10.0,
       this.mainFABPosY = 10.0,
-      this.paddingBtwSpeedDialButton = 20.0
+      this.paddingBtwSpeedDialButton = 20.0,
 //    this.difference = 0.0,
-      });
+      this.isShowSpeedDial = false,
+      this.updateSpeedDialStatus});
 
   @override
   State<StatefulWidget> createState() {
@@ -51,12 +56,29 @@ class SpeedDialMenuButton extends StatefulWidget {
 }
 
 class _SpeedDialMenuButtonState extends State<SpeedDialMenuButton> {
-  bool isShowSpeedDial = false;
+  bool _isShowSpeedDial = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _isShowSpeedDial = widget.isShowSpeedDial;
+  }
+
+  @override
+  void didUpdateWidget(SpeedDialMenuButton oldWidget) {
+//    print('didUpdateWidget');
+//    print('old ${oldWidget.isShowSpeedDial.toString()} new ${widget
+//        .isShowSpeedDial}');
+//    if (oldWidget.isShowSpeedDial != widget.isShowSpeedDial) {
+    this._isShowSpeedDial = widget.isShowSpeedDial;
+//    }
+    super.didUpdateWidget(oldWidget);
+  }
 
   @override
   Widget build(BuildContext context) {
     return SpeedDial(
-      isShowDial: this.isShowSpeedDial,
+      isShowDial: this._isShowSpeedDial,
       mainFloatingActionButtonWidget: _getMainFAB(),
       floatingActionButtonWidgetChildren:
           widget.floatingActionButtonWidgetChildren,
@@ -73,14 +95,14 @@ class _SpeedDialMenuButtonState extends State<SpeedDialMenuButton> {
 
   Widget _getMainFAB() {
     return FloatingActionButton(
-      child: this.isShowSpeedDial
+      child: this._isShowSpeedDial
           ? widget.mainMenuFloatingActionButton.closeMenuChild
           : widget.mainMenuFloatingActionButton.child,
       tooltip: widget.mainMenuFloatingActionButton.tooltip,
-      foregroundColor: this.isShowSpeedDial
+      foregroundColor: this._isShowSpeedDial
           ? widget.mainMenuFloatingActionButton.closeMenuForegroundColor
           : widget.mainMenuFloatingActionButton.foregroundColor,
-      backgroundColor: this.isShowSpeedDial
+      backgroundColor: this._isShowSpeedDial
           ? widget.mainMenuFloatingActionButton.closeMenuBackgroundColor
           : widget.mainMenuFloatingActionButton.backgroundColor,
       focusColor: widget.mainMenuFloatingActionButton.focusColor,
@@ -94,7 +116,8 @@ class _SpeedDialMenuButtonState extends State<SpeedDialMenuButton> {
           widget.mainMenuFloatingActionButton.highlightElevation,
       disabledElevation: widget.mainMenuFloatingActionButton.disabledElevation,
       onPressed: () {
-        this.isShowSpeedDial = !this.isShowSpeedDial;
+        this._isShowSpeedDial = !this._isShowSpeedDial;
+        widget.updateSpeedDialStatus(this._isShowSpeedDial);
         widget.mainMenuFloatingActionButton.onPressed();
         setState(() {});
       },
