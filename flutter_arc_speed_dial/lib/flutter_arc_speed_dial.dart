@@ -124,13 +124,14 @@ class _SpeedDialState extends State<SpeedDial>
     return Positioned(
       bottom: y,
       right: x,
-      child: widget.isEnableAnimation
-          ? AnimatedOpacity(
+      child: AnimatedOpacity(
           curve: Curves.linear,
           opacity: widget.isShowDial ? 1.0 : 0.0,
-          duration: const Duration(milliseconds: 100),
-          child: child)
-          : child,
+          duration: widget.isEnableAnimation?const Duration(milliseconds: 100):const Duration(milliseconds: 0),
+          child: IgnorePointer(
+            ignoring: !widget.isShowDial,
+              child: child
+          )),
     );
   }
 
