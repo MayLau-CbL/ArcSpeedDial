@@ -1,3 +1,6 @@
+## [2.0.0] - 20210502
+* Update: Null Safety Support
+
 ## [1.0.3] - 20200621
 * Fixed invisible button still able to click issue
 * Added example project

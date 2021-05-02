@@ -5,34 +5,34 @@ import 'package:flutter/material.dart';
 class MainMenuFloatingActionButton {
   /// To set the widget after clicked the FAB
   final Widget closeMenuChild;
-  final Color closeMenuForegroundColor;
-  final Color closeMenuBackgroundColor;
+  final Color? closeMenuForegroundColor;
+  final Color? closeMenuBackgroundColor;
 
   final Widget child;
-  final Color foregroundColor;
-  final Color backgroundColor;
-  final String tooltip;
-  final Color focusColor;
-  final Color hoverColor;
-  final Color splashColor;
-  final Object heroTag;
+  final Color? foregroundColor;
+  final Color? backgroundColor;
+  final String? tooltip;
+  final Color? focusColor;
+  final Color? hoverColor;
+  final Color? splashColor;
+  final Object? heroTag;
   final Function() onPressed;
-  final double elevation;
-  final double focusElevation;
-  final double hoverElevation;
-  final double highlightElevation;
-  final double disabledElevation;
+  final double? elevation;
+  final double? focusElevation;
+  final double? hoverElevation;
+  final double? highlightElevation;
+  final double? disabledElevation;
   final bool mini;
-  final ShapeBorder shape;
+  final ShapeBorder? shape;
   final Clip clipBehavior;
   final bool isExtended;
-  final FocusNode focusNode;
+  final FocusNode? focusNode;
   final bool autofocus;
-  final MaterialTapTargetSize materialTapTargetSize;
+  final MaterialTapTargetSize? materialTapTargetSize;
 
   MainMenuFloatingActionButton({
-    @required this.child,
-    @required this.closeMenuChild,
+    required this.child,
+    required this.closeMenuChild,
     this.tooltip,
     this.closeMenuForegroundColor,
     this.foregroundColor,
@@ -47,7 +47,7 @@ class MainMenuFloatingActionButton {
     this.hoverElevation,
     this.highlightElevation,
     this.disabledElevation,
-    @required this.onPressed,
+    required this.onPressed,
     this.mini = false,
     this.shape,
     this.clipBehavior = Clip.none,
@@ -55,13 +55,9 @@ class MainMenuFloatingActionButton {
     this.autofocus = false,
     this.materialTapTargetSize,
     this.isExtended = false,
-  })
-      : assert(elevation == null || elevation >= 0.0),
+  })  : assert(elevation == null || elevation >= 0.0),
         assert(focusElevation == null || focusElevation >= 0.0),
         assert(hoverElevation == null || hoverElevation >= 0.0),
         assert(highlightElevation == null || highlightElevation >= 0.0),
-        assert(disabledElevation == null || disabledElevation >= 0.0),
-        assert(mini != null),
-        assert(isExtended != null),
-        assert(autofocus != null);
+        assert(disabledElevation == null || disabledElevation >= 0.0);
 }

@@ -9,10 +9,10 @@ This shows Widget's full customizations:
 ```
 SpeedDialMenuButton(
       {this.isEnableAnimation = true,
-      @required this.mainMenuFloatingActionButton,
-      @required this.isMainFABMini,
-      @required this.floatingActionButtonWidgetChildren,
-      @required this.isSpeedDialFABsMini,
+      required this.mainMenuFloatingActionButton,
+      required this.isMainFABMini,
+      required this.floatingActionButtonWidgetChildren,
+      required this.isSpeedDialFABsMini,
       this.mainFABPosX = 10.0,
       this.mainFABPosY = 10.0,
       this.paddingBtwSpeedDialButton = 20.0,
@@ -36,8 +36,8 @@ This is the main menu floating button for open and hide the speed dials. Basical
 
 ```
 MainMenuFloatingActionButton(
-    @required this.child,
-    @required this.closeMenuChild,
+    required this.child,
+    required this.closeMenuChild,
     this.closeMenuForegroundColor,
     this.foregroundColor,
     this.closeMenuBackgroundColor,
@@ -79,7 +79,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, required this.title}) : super(key: key);
   final String title;
 
   @override
@@ -157,7 +157,6 @@ class _MyHomePageState extends State<MyHomePage> {
     return Container();
   }
 }
-
 
 ```
 
