@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, required this.title}) : super(key: key);
   final String title;
 
   @override
@@ -94,17 +94,6 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget _getBodyWidget() {
-    return Container(
-//      alignment: Alignment.bottomRight,
-//      child: SizedBox(
-//        width: 300,
-//        height: 200,
-//        child: RaisedButton(
-//            onPressed: () {
-//              print('success');
-//            },
-//            child: Text('testing ')),
-//      ),
-    );
+    return Container();
   }
 }

@@ -34,18 +34,17 @@ class SpeedDialMenuButton extends StatefulWidget {
 
   final bool isShowSpeedDial;
 
-  final void Function(bool) updateSpeedDialStatus;
+  final void Function(bool)? updateSpeedDialStatus;
 
   SpeedDialMenuButton(
       {this.isEnableAnimation = true,
-      @required this.mainMenuFloatingActionButton,
-      @required this.isMainFABMini,
-      @required this.floatingActionButtonWidgetChildren,
-      @required this.isSpeedDialFABsMini,
+      required this.mainMenuFloatingActionButton,
+      required this.isMainFABMini,
+      required this.floatingActionButtonWidgetChildren,
+      required this.isSpeedDialFABsMini,
       this.mainFABPosX = 10.0,
       this.mainFABPosY = 10.0,
       this.paddingBtwSpeedDialButton = 20.0,
-//    this.difference = 0.0,
       this.isShowSpeedDial = false,
       this.updateSpeedDialStatus});
 
@@ -66,12 +65,7 @@ class _SpeedDialMenuButtonState extends State<SpeedDialMenuButton> {
 
   @override
   void didUpdateWidget(SpeedDialMenuButton oldWidget) {
-//    print('didUpdateWidget');
-//    print('old ${oldWidget.isShowSpeedDial.toString()} new ${widget
-//        .isShowSpeedDial}');
-//    if (oldWidget.isShowSpeedDial != widget.isShowSpeedDial) {
     this._isShowSpeedDial = widget.isShowSpeedDial;
-//    }
     super.didUpdateWidget(oldWidget);
   }
 
@@ -93,7 +87,7 @@ class _SpeedDialMenuButtonState extends State<SpeedDialMenuButton> {
     );
   }
 
-  Widget _getMainFAB() {
+  FloatingActionButton _getMainFAB() {
     return FloatingActionButton(
       child: this._isShowSpeedDial
           ? widget.mainMenuFloatingActionButton.closeMenuChild
@@ -117,7 +111,9 @@ class _SpeedDialMenuButtonState extends State<SpeedDialMenuButton> {
       disabledElevation: widget.mainMenuFloatingActionButton.disabledElevation,
       onPressed: () {
         this._isShowSpeedDial = !this._isShowSpeedDial;
-        widget.updateSpeedDialStatus(this._isShowSpeedDial);
+        if (widget.updateSpeedDialStatus != null) {
+          widget.updateSpeedDialStatus!(this._isShowSpeedDial);
+        }
         widget.mainMenuFloatingActionButton.onPressed();
         setState(() {});
       },

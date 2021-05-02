@@ -36,18 +36,17 @@ class SpeedDial extends StatefulWidget {
   /// Is enable animation when hide show the speed dial children
   final bool isEnableAnimation;
 
-  const SpeedDial({this.isShowDial = false,
-    this.isEnableAnimation = true,
-    @required this.mainFloatingActionButtonWidget,
-    @required this.isMainFABMini,
-    @required this.floatingActionButtonWidgetChildren,
-    @required this.isSpeedDialFABsMini,
-    @required this.totalSpeedDialItem,
-    this.mainFABPosX = 10.0,
-    this.mainFABPosY = 10.0,
-    this.paddingBtwSpeedDialButton = 20.0
-//    this.difference = 0.0,
-  });
+  const SpeedDial(
+      {this.isShowDial = false,
+      this.isEnableAnimation = true,
+      required this.mainFloatingActionButtonWidget,
+      required this.isMainFABMini,
+      required this.floatingActionButtonWidgetChildren,
+      required this.isSpeedDialFABsMini,
+      required this.totalSpeedDialItem,
+      this.mainFABPosX = 10.0,
+      this.mainFABPosY = 10.0,
+      this.paddingBtwSpeedDialButton = 20.0});
 
   @override
   State<StatefulWidget> createState() {
@@ -62,8 +61,8 @@ class _SpeedDialState extends State<SpeedDial>
   static const double NORMAL_FAB_RADIUS = 28.0;
   static const double MINI_FAB_RADIUS = 20.0;
 
-  double _radius;
-  double _diff;
+  late double _radius;
+  late double _diff;
 
   @override
   void initState() {
@@ -74,9 +73,6 @@ class _SpeedDialState extends State<SpeedDial>
         widget.isSpeedDialFABsMini ? MINI_FAB_DIAMETER : NORMAL_FAB_DIAMETER,
         widget.paddingBtwSpeedDialButton);
 
-//    if (widget.difference != 0.0) {
-//      _diff = widget.difference;
-//    } else {
     if (widget.isMainFABMini && widget.isSpeedDialFABsMini) {
       //all mini
       _diff = 0.0;
@@ -90,12 +86,11 @@ class _SpeedDialState extends State<SpeedDial>
       //main
       _diff = NORMAL_FAB_RADIUS - MINI_FAB_RADIUS;
     }
-//    }
   }
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> children = List<Widget>();
+    List<Widget> children = [];
     for (int i = 0; i < widget.totalSpeedDialItem; i++) {
       children.add(_getSpeedDialFABWidget(widget.totalSpeedDialItem, i, _radius,
           widget.floatingActionButtonWidgetChildren[i]));
@@ -114,8 +109,8 @@ class _SpeedDialState extends State<SpeedDial>
     );
   }
 
-  Widget _getSpeedDialFABWidget(int ttlNum, int index, double radius,
-      Widget child) {
+  Widget _getSpeedDialFABWidget(
+      int ttlNum, int index, double radius, Widget child) {
     return _getFAB(widget.mainFABPosX + _diff + _getX(ttlNum, index, radius),
         widget.mainFABPosY + _diff + _getY(ttlNum, index, radius), child);
   }
@@ -127,11 +122,10 @@ class _SpeedDialState extends State<SpeedDial>
       child: AnimatedOpacity(
           curve: Curves.linear,
           opacity: widget.isShowDial ? 1.0 : 0.0,
-          duration: widget.isEnableAnimation?const Duration(milliseconds: 100):const Duration(milliseconds: 0),
-          child: IgnorePointer(
-            ignoring: !widget.isShowDial,
-              child: child
-          )),
+          duration: widget.isEnableAnimation
+              ? const Duration(milliseconds: 100)
+              : const Duration(milliseconds: 0),
+          child: IgnorePointer(ignoring: !widget.isShowDial, child: child)),
     );
   }
 
