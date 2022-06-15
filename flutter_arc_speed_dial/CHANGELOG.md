@@ -1,3 +1,7 @@
+## [2.0.1] - 20220615
+* Update: IOS min version to 9.0
+* Update: example android project to v2 embedding
+
 ## [2.0.0] - 20210502
 * Update: Null Safety Support
 
